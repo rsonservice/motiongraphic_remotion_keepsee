@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
   interpolate,
   Easing,
+  Sequence,
 } from "remotion";
 
 export const VideoExpansion: React.FC = () => {
@@ -30,7 +31,7 @@ export const VideoExpansion: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "white" }}>
       {/* VIDEO3 - Background */}
-      <AbsoluteFill>
+      <Sequence>
         <OffthreadVideo
           src={staticFile("VIDEO3.mp4")}
           style={{
@@ -39,7 +40,7 @@ export const VideoExpansion: React.FC = () => {
             objectFit: "cover",
           }}
         />
-      </AbsoluteFill>
+      </Sequence>
 
       {/* VIDEO1 - Expands upward from center */}
       {frame >= 2 && (

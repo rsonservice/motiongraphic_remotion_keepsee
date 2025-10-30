@@ -3,6 +3,7 @@ import {
   OffthreadVideo,
   staticFile,
   useCurrentFrame,
+  Sequence,
 } from "remotion";
 
 export const SplitScreen: React.FC = () => {
@@ -10,97 +11,16 @@ export const SplitScreen: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: "white" }}>
-      {/* VIDEO1 as background - top half */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "50%",
-          backgroundColor: "white",
-        }}
-      >
+      <Sequence from={-20}>
         <OffthreadVideo
-          src={staticFile("VIDEO1.mp4")}
-          startFrom={60 + frame} // Continue from where Phase1 left off
+          src={staticFile("VIDEO3.mp4")}
           style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
           }}
         />
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              fontFamily: "Figtree Bold, sans-serif",
-              fontSize: "250px",
-              fontWeight: "bold",
-              color: "white",
-              textAlign: "center",
-            }}
-          >
-            AUG
-          </div>
-        </div>
-      </div>
-
-      {/* VIDEO4 as background - bottom half */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: 0,
-          width: "100%",
-          height: "50%",
-          backgroundColor: "white",
-        }}
-      >
-        <OffthreadVideo
-          src={staticFile("VIDEO4.mp4")}
-          startFrom={60 + frame} // Continue from where Phase1 left off
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              fontFamily: "Figtree Bold, sans-serif",
-              fontSize: "250px",
-              fontWeight: "bold",
-              color: "white",
-              textAlign: "center",
-            }}
-          >
-            2025
-          </div>
-        </div>
-      </div>
+      </Sequence>
 
       {/* Horizontal line separator */}
       <div

@@ -4,6 +4,7 @@ import {
   Easing,
   staticFile,
   Img,
+  Sequence,
 } from "remotion";
 
 import { KeepseeBeach } from "../KeepseeBeach";
@@ -25,7 +26,9 @@ export const VideoExpansionRight: React.FC = () => {
 
   return (
     <div style={{}}>
-      <KeepseeBeach />
+      <Sequence from={-240}>
+        <KeepseeBeach />
+      </Sequence>
 
       <div
         style={{

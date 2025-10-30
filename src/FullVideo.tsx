@@ -18,43 +18,43 @@ export const FullVideo: React.FC = () => {
       </Sequence>
 
       {/* KeepseeRacing: starts at frame 181, includes frozen KeepseeTitle background */}
-      <Sequence from={181} durationInFrames={210}>
+      <Sequence from={180} durationInFrames={210}>
         <KeepseeRacing />
       </Sequence>
 
       {/* Transition: KeepseeRacing scales down with blur to KeepseePig */}
-      <Sequence from={392} durationInFrames={30}>
+      <Sequence from={390} durationInFrames={30}>
         <RacingToPigTransition />
       </Sequence>
 
       {/* KeepseePig continues from frame 30 (after full transition) */}
-      <Sequence from={423} durationInFrames={300}>
+      <Sequence from={420} durationInFrames={300}>
         <Sequence from={-30}>
           <KeepseePig />
         </Sequence>
       </Sequence>
 
       {/* Transition: KeepseePig slides left, KeepseeBeach slides in from right */}
-      <Sequence from={724} durationInFrames={30}>
+      <Sequence from={720} durationInFrames={30}>
         <PigToBeachTransition />
       </Sequence>
 
       {/* KeepseeBeach continues from frame 30 (after transition) */}
-      <Sequence from={754} durationInFrames={240}>
+      <Sequence from={750} durationInFrames={240}>
         {/* <Sequence from={-30}> */}
         <KeepseeBeach />
         {/* </Sequence> */}
       </Sequence>
 
-      <Sequence from={995} durationInFrames={330}>
+      <Sequence from={990} durationInFrames={330}>
         <KeepseeWellsBeach />
       </Sequence>
 
-      <Sequence from={1325} durationInFrames={90}>
+      <Sequence from={1320} durationInFrames={90}>
         <KeepseeUntil />
       </Sequence>
 
-      <Sequence from={1415} durationInFrames={90}>
+      <Sequence from={1410} durationInFrames={90}>
         <KeepseeEnd />
       </Sequence>
     </AbsoluteFill>

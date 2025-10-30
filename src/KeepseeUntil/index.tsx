@@ -12,7 +12,9 @@ import { VideoExpansion3 } from "../KeepseeWellsBeach/VideoExpansion3";
 // import { VideoExpansion3 } from "./VideoExpansion3";
 // import { VideoExpansionWithText } from "./VideoExpansionWithText";
 
-export const KeepseeUntil: React.FC = () => {
+export const KeepseeUntil: React.FC<{ staticSize?: boolean }> = ({
+  staticSize = false,
+}) => {
   const frame = useCurrentFrame();
 
   const expansionStart = 0;
@@ -32,22 +34,24 @@ export const KeepseeUntil: React.FC = () => {
   const textAnimStart = 0;
   const textAnimEnd = 90;
 
-  const textProgress = interpolate(
-    frame,
-    [textAnimStart, expansionEnd, textAnimEnd],
-    [80, 60, 50],
-    {
-      easing: Easing.linear,
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    }
-  );
+  const textProgress = staticSize
+    ? 50
+    : interpolate(
+        frame,
+        [textAnimStart, expansionEnd, textAnimEnd],
+        [80, 60, 50],
+        {
+          easing: Easing.linear,
+          extrapolateLeft: "clamp",
+          extrapolateRight: "wrap",
+        }
+      );
 
   const untilImgHeight = untilImgExpansionProgress * 50;
 
   return (
     <div>
-      <Sequence from={-30}>
+      <Sequence from={-150}>
         <VideoExpansion3 />
       </Sequence>
 

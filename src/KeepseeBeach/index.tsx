@@ -1,13 +1,24 @@
-import { AbsoluteFill, OffthreadVideo, staticFile } from "remotion";
-import { KeepseePig } from "../KeepseePig";
+import {
+  AbsoluteFill,
+  OffthreadVideo,
+  staticFile,
+  interpolate,
+  Easing,
+  useCurrentFrame,
+} from "remotion";
+import { DateMark } from "../DateMark";
 
 export const KeepseeBeach: React.FC = () => {
+  const frame = useCurrentFrame();
+
+  const scaleCalendar = interpolate(frame, [40, 55], [0, 1], {
+    easing: Easing.bezier(0.83, 0, 0.17, 1),
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
   return (
     <AbsoluteFill>
-      {/* Background: KeepseePig component */}
-      {/* <KeepseePig /> */}
-
-      {/* Beach video playing on top */}
       <AbsoluteFill>
         <OffthreadVideo
           src={staticFile("beach.mp4")}
@@ -18,6 +29,17 @@ export const KeepseeBeach: React.FC = () => {
             objectFit: "cover",
           }}
         />
+
+        <div
+          style={{
+            position: "relative",
+            top: -260,
+            left: 350,
+            transform: `scale(${scaleCalendar})`,
+          }}
+        >
+          <DateMark month={4} />
+        </div>
       </AbsoluteFill>
     </AbsoluteFill>
   );

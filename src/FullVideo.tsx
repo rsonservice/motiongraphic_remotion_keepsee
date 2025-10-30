@@ -3,6 +3,7 @@ import { KeepseeTitle } from "./KeepseeTitle";
 import { KeepseeRacing } from "./KeepseeRacing";
 import { RacingToPigTransition } from "./RacingToPigTransition";
 import { KeepseePig } from "./KeepseePig";
+import { PigToBeachTransition } from "./PigToBeachTransition";
 import { KeepseeBeach } from "./KeepseeBeach";
 import { KeepseeWellsBeach } from "./KeepseeWellsBeach";
 import { KeepseeUntil } from "./KeepseeUntil";
@@ -27,14 +28,22 @@ export const FullVideo: React.FC = () => {
       </Sequence>
 
       {/* KeepseePig continues from frame 30 (after full transition) */}
-      <Sequence from={421} durationInFrames={330}>
+      <Sequence from={421} durationInFrames={300}>
         <Sequence from={-30}>
           <KeepseePig />
         </Sequence>
       </Sequence>
 
+      {/* Transition: KeepseePig slides left, KeepseeBeach slides in from right */}
+      <Sequence from={721} durationInFrames={30}>
+        <PigToBeachTransition />
+      </Sequence>
+
+      {/* KeepseeBeach continues from frame 30 (after transition) */}
       <Sequence from={751} durationInFrames={240}>
-        <KeepseeBeach />
+        <Sequence from={-30}>
+          <KeepseeBeach />
+        </Sequence>
       </Sequence>
 
       <Sequence from={991} durationInFrames={330}>

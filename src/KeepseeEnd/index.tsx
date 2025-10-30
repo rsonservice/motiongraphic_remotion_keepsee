@@ -26,10 +26,15 @@ export const KeepseeEnd: React.FC = () => {
   return (
     <div>
       <Sequence from={-30}>
-        <KeepseeUntil />
+        <KeepseeUntil staticSize={true} />
       </Sequence>
 
-      <AbsoluteFill>
+      <AbsoluteFill
+        style={{
+          transform: `translateY(${clipHeight - 100}%)`,
+          clipPath: `inset(0 0 ${100 - clipHeight}% 0)`,
+        }}
+      >
         {/* Racing video that reveals from top to bottom */}
         <div
           style={{
@@ -38,7 +43,6 @@ export const KeepseeEnd: React.FC = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            clipPath: `inset(0 0 ${100 - clipHeight}% 0)`,
           }}
         >
           {/* Main racing video */}

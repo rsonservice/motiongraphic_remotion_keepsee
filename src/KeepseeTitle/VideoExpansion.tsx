@@ -53,8 +53,8 @@ export const VideoExpansion: React.FC = () => {
             height: `${videoHeight}%`,
             overflow: "hidden",
             border: "16px solid white",
-            borderRadius: "40px",
             boxSizing: "border-box",
+            backgroundColor: "white",
           }}
         >
           <div
@@ -66,7 +66,6 @@ export const VideoExpansion: React.FC = () => {
           >
             <OffthreadVideo
               src={staticFile("VIDEO1.mp4")}
-              startFrom={frame}
               style={{
                 position: "absolute",
                 width: "100%",
@@ -74,6 +73,7 @@ export const VideoExpansion: React.FC = () => {
                 top: 0,
                 left: 0,
                 objectFit: "cover",
+                borderRadius: "40px",
               }}
             />
             {/* Text overlay for VIDEO1 */}
@@ -117,8 +117,8 @@ export const VideoExpansion: React.FC = () => {
             height: `${videoHeight}%`,
             overflow: "hidden",
             border: "16px solid white",
-            borderRadius: "40px",
             boxSizing: "border-box",
+            backgroundColor: "white",
           }}
         >
           <div
@@ -130,7 +130,6 @@ export const VideoExpansion: React.FC = () => {
           >
             <OffthreadVideo
               src={staticFile("VIDEO4.mp4")}
-              startFrom={frame}
               style={{
                 position: "absolute",
                 width: "100%",
@@ -138,6 +137,7 @@ export const VideoExpansion: React.FC = () => {
                 top: 0,
                 left: 0,
                 objectFit: "cover",
+                borderRadius: "40px",
               }}
             />
             {/* Text overlay for VIDEO4 */}

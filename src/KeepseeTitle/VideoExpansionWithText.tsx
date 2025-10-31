@@ -9,7 +9,13 @@ import {
 } from "remotion";
 import { VideoExpansion } from "./VideoExpansion";
 
-export const VideoExpansionWithText: React.FC = () => {
+interface VideoExpansionWithTextProps {
+  staticSize?: boolean;
+}
+
+export const VideoExpansionWithText: React.FC<VideoExpansionWithTextProps> = ({
+  staticSize = false,
+}) => {
   const frame = useCurrentFrame();
 
   // VIDEO2 expands from center (frames 0-45 in this component, 1.5 seconds)
@@ -28,7 +34,7 @@ export const VideoExpansionWithText: React.FC = () => {
   );
 
   // VIDEO2 grows from 0% to 50% in each direction (total 100% of screen)
-  const video2Height = video2ExpansionProgress * 50;
+  const video2Height = staticSize ? 50 : video2ExpansionProgress * 50;
 
   // Text animation (frames 15-40, 0.83 seconds) with cosine easing
   const textAnimStart = 15;
@@ -61,9 +67,9 @@ export const VideoExpansionWithText: React.FC = () => {
           width: "100%",
           height: `${video2Height * 2}%`,
           overflow: "hidden",
-          border: frame < 45 ? "16px solid white" : "none",
-          borderRadius: frame < 45 ? "40px" : "0px",
+          border: "16px solid white",
           boxSizing: "border-box",
+          backgroundColor: "white",
         }}
       >
         <OffthreadVideo
@@ -72,6 +78,7 @@ export const VideoExpansionWithText: React.FC = () => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
+            borderRadius: "40px",
           }}
         />
         {/* Text overlay for VIDEO2 with cosine easing animation */}
@@ -98,7 +105,6 @@ export const VideoExpansionWithText: React.FC = () => {
                 color: "white",
                 textAlign: "center",
                 lineHeight: "145.2px",
-                WebkitTextStroke: "3px white",
               }}
             >
               WITH

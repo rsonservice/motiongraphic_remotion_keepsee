@@ -11,8 +11,8 @@ export const DateMark: React.FC<{ month: number }> = ({ month }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const bigWidthSize = 240;
-  const bigHightSize = 305;
+  const bigWidthSize = 200;
+  const bigHightSize = 262;
 
   const drawProgress = spring({
     frame,
@@ -25,26 +25,26 @@ export const DateMark: React.FC<{ month: number }> = ({ month }) => {
     },
   });
 
-  const horizontalLineWidth = interpolate(frame, [55, 85], [0, 1], {
+  const horizontalLineWidth = interpolate(frame, [55, 65], [0, 1], {
     easing: Easing.out(Easing.ease),
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
   // Text appears after rotation completes (frame 35)
-  const textOpacityA = interpolate(frame, [80, 90], [0, 1], {
+  const textOpacityA = interpolate(frame, [60, 70], [0, 1], {
     easing: Easing.out(Easing.ease),
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
-  const textOpacityU = interpolate(frame, [95, 105], [0, 1], {
+  const textOpacityU = interpolate(frame, [65, 75], [0, 1], {
     easing: Easing.out(Easing.ease),
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
-  const textOpacityG = interpolate(frame, [100, 110], [0, 1], {
+  const textOpacityG = interpolate(frame, [70, 80], [0, 1], {
     easing: Easing.out(Easing.ease),
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -67,10 +67,10 @@ export const DateMark: React.FC<{ month: number }> = ({ month }) => {
       >
         <div
           style={{
-            width: "210px",
-            height: "280px",
+            width: "180px",
+            height: "240px",
             backgroundColor: "#e2e2dc",
-            borderRadius: "35px",
+            borderRadius: "23px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -89,7 +89,8 @@ export const DateMark: React.FC<{ month: number }> = ({ month }) => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "-30px",
+              marginTop: "-17px",
+              marginBottom: "-7px",
               opacity: textOpacityA,
             }}
           >
@@ -99,7 +100,7 @@ export const DateMark: React.FC<{ month: number }> = ({ month }) => {
           <div
             style={{
               width: `${horizontalLineWidth * 70}%`,
-              height: "5px",
+              height: "3px",
               backgroundColor: "black",
               margin: "20px",
               opacity: horizontalLineWidth,
@@ -109,13 +110,14 @@ export const DateMark: React.FC<{ month: number }> = ({ month }) => {
           {/* Month */}
           <div
             style={{
-              fontSize: "80px",
+              fontSize: "67px",
               fontWeight: "350",
               fontFamily: "system-ui, -apple-system, sans-serif",
               color: "black",
               lineHeight: "1",
               display: "flex",
               flexDirection: "row",
+              marginTop: "-12px",
             }}
           >
             <div style={{ opacity: textOpacityA }}>A</div>
@@ -146,7 +148,7 @@ export const DateMark: React.FC<{ month: number }> = ({ month }) => {
             strokeDasharray={perimeter}
             strokeDashoffset={-dashOffset}
             strokeWidth={3}
-            rx={45}
+            rx={30}
             style={{
               filter: "drop-shadow(0px 0px 20px rgba(226, 226, 220, 0.5))",
             }}

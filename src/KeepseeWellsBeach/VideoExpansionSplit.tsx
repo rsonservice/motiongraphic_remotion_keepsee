@@ -15,19 +15,16 @@ export const VideoExpansionSplit: React.FC = () => {
   // VIDEO1 and VIDEO4 expand from center (frames 0-60 in this component)
   const expansionStart = 1;
   const expansionEnd = 30;
-  const expansionProgress = interpolate(
+  const videoHeight = interpolate(
     frame,
     [expansionStart, expansionEnd],
-    [0, 1],
+    [0, 50],
     {
       easing: Easing.bezier(0.83, 0, 0.17, 1),
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }
   );
-
-  // Height grows from 0% to 50% of screen
-  const videoHeight = expansionProgress * 50;
 
   return (
     <div>
@@ -53,8 +50,8 @@ export const VideoExpansionSplit: React.FC = () => {
               height: `${videoHeight}%`,
               overflow: "hidden",
               border: "16px solid white",
-              borderRadius: "40px",
               boxSizing: "border-box",
+              backgroundColor: "white",
             }}
           >
             <div
@@ -62,6 +59,7 @@ export const VideoExpansionSplit: React.FC = () => {
                 position: "relative",
                 width: "100%",
                 height: "100%",
+                borderRadius: "40px",
               }}
             >
               <Img
@@ -74,6 +72,7 @@ export const VideoExpansionSplit: React.FC = () => {
                   top: 0,
                   left: 0,
                   objectFit: "cover",
+                  borderRadius: "40px",
                 }}
               />
             </div>
@@ -91,8 +90,9 @@ export const VideoExpansionSplit: React.FC = () => {
               height: `${videoHeight}%`,
               overflow: "hidden",
               border: "16px solid white",
-              borderRadius: "40px",
               boxSizing: "border-box",
+              backgroundColor: "white",
+              marginTop: "-1px",
             }}
           >
             <div
@@ -112,6 +112,7 @@ export const VideoExpansionSplit: React.FC = () => {
                   top: 0,
                   left: 0,
                   objectFit: "cover",
+                  borderRadius: "40px",
                 }}
               />
             </div>

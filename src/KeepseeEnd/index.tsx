@@ -111,7 +111,7 @@ export const KeepseeEnd: React.FC = () => {
         </div>
 
         {/* White border line that moves with the racing video reveal, disappears when fully expanded */}
-        {frame < 54 && (
+        {frame < 40 && (
           <div
             style={{
               position: "absolute",

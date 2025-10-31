@@ -5,9 +5,11 @@ import {
   useCurrentFrame,
   interpolate,
   Easing,
+  Sequence,
 } from "remotion";
 
 import { DateMark } from "../DateMark";
+import { VideoExpansionWithText } from "../KeepseeTitle/VideoExpansionWithText";
 
 export const KeepseeRacing: React.FC = () => {
   const frame = useCurrentFrame();
@@ -29,73 +31,12 @@ export const KeepseeRacing: React.FC = () => {
   const clipHeight = revealProgress * 100;
 
   return (
-    <AbsoluteFill>
-      {/* Background: VIDEO2 (same as the end of KeepseeTitle) with white border */}
-      <AbsoluteFill style={{ backgroundColor: "white" }}>
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            border: "16px solid white",
-            borderRadius: "40px",
-            boxSizing: "border-box",
-            overflow: "hidden",
-          }}
-        >
-          <OffthreadVideo
-            src={staticFile("VIDEO2.mp4")}
-            pauseWhenBuffering
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
-          {/* Text overlay from KeepseeTitle's last frame */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              pointerEvents: "none",
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                fontFamily: "Figtree Bold, sans-serif",
-                fontSize: "150px",
-                fontWeight: "bold",
-                color: "white",
-                textAlign: "center",
-                lineHeight: "145.2px",
-              }}
-            >
-              WITH
-              <br />
-              <br />
-              THE
-              <br />
-              MOULTON
-              <br />
-              FAMILY
-              <br />
-              CIRCUS
-            </div>
-          </div>
-        </div>
-      </AbsoluteFill>
+    <div>
+      <Sequence from={-60}>
+        <VideoExpansionWithText staticSize={true} />
+      </Sequence>
 
-      {/* Racing video that reveals from top to bottom */}
-      <div
+      <AbsoluteFill
         style={{
           position: "absolute",
           top: 0,
@@ -119,29 +60,29 @@ export const KeepseeRacing: React.FC = () => {
         <div
           style={{
             position: "relative",
-            top: -260,
-            left: 350,
+            top: -220,
+            left: 380,
             transform: `scale(${scaleCalendar})`,
           }}
         >
           <DateMark month={1} />
         </div>
-      </div>
 
-      {/* White border line that moves with the racing video reveal, disappears when fully expanded */}
-      {frame < 54 && (
-        <div
-          style={{
-            position: "absolute",
-            top: `${clipHeight}%`,
-            left: 0,
-            width: "100%",
-            height: "18px",
-            backgroundColor: "white",
-            transform: "translateY(-16px)",
-          }}
-        />
-      )}
-    </AbsoluteFill>
+        {/* White border line that moves with the racing video reveal, disappears when fully expanded */}
+        {frame < 40 && (
+          <div
+            style={{
+              position: "absolute",
+              top: `${clipHeight}%`,
+              left: 0,
+              width: "100%",
+              height: "18px",
+              backgroundColor: "white",
+              transform: "translateY(-16px)",
+            }}
+          />
+        )}
+      </AbsoluteFill>
+    </div>
   );
 };

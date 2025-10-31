@@ -22,25 +22,13 @@ export const FullVideo: React.FC = () => {
         <KeepseeRacing />
       </Sequence>
 
-      {/* Transition: KeepseeRacing scales down with blur to KeepseePig */}
-      <Sequence from={390} durationInFrames={30}>
-        <RacingToPigTransition />
-      </Sequence>
-
       {/* KeepseePig continues from frame 30 (after full transition) */}
-      <Sequence from={420} durationInFrames={300}>
-        <Sequence from={-30}>
-          <KeepseePig />
-        </Sequence>
-      </Sequence>
-
-      {/* Transition: KeepseePig slides left, KeepseeBeach slides in from right */}
-      <Sequence from={720} durationInFrames={30}>
-        <PigToBeachTransition />
+      <Sequence from={390} durationInFrames={330}>
+        <KeepseePig />
       </Sequence>
 
       {/* KeepseeBeach continues from frame 30 (after transition) */}
-      <Sequence from={750} durationInFrames={240}>
+      <Sequence from={720} durationInFrames={270}>
         {/* <Sequence from={-30}> */}
         <KeepseeBeach />
         {/* </Sequence> */}

@@ -26,7 +26,7 @@ export const VideoExpansionRight: React.FC = () => {
 
   return (
     <div style={{}}>
-      <Sequence from={-240}>
+      <Sequence from={-240} staticSize={true}>
         <KeepseeBeach />
       </Sequence>
 
